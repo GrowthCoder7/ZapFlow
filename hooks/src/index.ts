@@ -11,9 +11,9 @@ app.use(express.json());
 app.post("/hooks/catch/:userId/:zapId",async (req,res)=>{
     const userId = req.params.userId;
     const zapId=req.params.zapId;
-    const body=req.body;
+    const body=req.body; //meta data
 
-    await client.$transaction(async (tx)=>{
+    await client.$transaction(async (tx)=>{ //ZapRun and ZapRunOutbox transaction
         const run= await tx.zapRun.create({
             data:{
                 zapId:zapId,
@@ -23,7 +23,6 @@ app.post("/hooks/catch/:userId/:zapId",async (req,res)=>{
 
         await tx.zapRunOutbox.create({
             data:{
-                // zapRunId:zapId
                 zapRunId:run.id
             }
         })
