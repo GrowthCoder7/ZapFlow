@@ -11,8 +11,19 @@ const signinSchema=z.object({
     password:z.string()
 })
 
+const ZapSchema=z.object({
+    availableTriggerId:z.string(),
+    triggerMetaDat:z.any().optional(),
+    actions:z.array(z.object({
+            availableActionId:z.string(),
+            actionMetaData:z.any().optional()
+        })
+    )
+})
+
 export{
     signinSchema,
-    signupSchema
+    signupSchema,
+    ZapSchema
 }
  
