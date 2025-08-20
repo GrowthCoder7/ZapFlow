@@ -64,16 +64,18 @@ async function signinHandler(req:Request,res:Response) {
 
 async function userHandler(req:Request,res:Response) {
     //@ts-ignore
-    const id = req.id;
-    const user = await client.user.findFirst({
-        where:id,
+    const id = req.userId;
+    const user = await client.user.findUnique({
+        where:{
+            id
+        },
         select:{
             name:true,
             email:true
         }
     });
 
-    return res.status(211).json({
+    return res.status(200).json({
         user
     })
 }

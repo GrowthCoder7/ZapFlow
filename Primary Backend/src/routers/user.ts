@@ -11,6 +11,6 @@ router.post("/signup",signupHandler)
 router.post("/signin",signinHandler)
 
 //show user
-router.get("/:user",authMiddleWare,userHandler)
+router.get("/",authMiddleWare,userHandler)
 
 export const userRouter = router;
