@@ -9,7 +9,7 @@ async function zapHandler(req:Request,res:Response) {
         return res.status(403).send("Wrong inputs!")
     }
     
-    await client.$transaction(async tx=>{
+    const Zap = await client.$transaction(async tx=>{
         const zap = await tx.zap.create({
             data:{
                 triggerId:"",
@@ -40,6 +40,8 @@ async function zapHandler(req:Request,res:Response) {
             }
         })
     })
+    
+    return res.status(200).json(Zap)
 }
 
 async function getAllZaps(req:Request,res:Response) {
