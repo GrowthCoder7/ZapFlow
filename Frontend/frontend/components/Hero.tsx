@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 const Hero = () => {
     const router = useRouter();
   return (
-    <div>
+    <div >
         <div className='flex justify-center'>
             <div className='text-5xl font-semibold text-center pt-10 max-w-xl'>
                 Your apps aren't just connected, they<span className='bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-700 inline-block text-transparent bg-clip-text pb-2'>think together</span>
